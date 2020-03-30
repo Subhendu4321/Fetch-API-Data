@@ -10,13 +10,13 @@ import { useState } from 'react';
 
 export default function FormDialog(props) {
     const [open, setOpen] = useState(false);
-    const [firstName,setFirstName] = useState("");
-    const [lastName,setLastName] = useState("");
-    const [phoneNumber,setPhoneNumber] = useState("");
-    const [email,setEmail] = useState("");
+    const [firstName,setFirstName] = useState(localStorage.getItem("firstName"));
+    const [lastName,setLastName] = useState(localStorage.getItem("lastName"));
+    const [phoneNumber,setPhoneNumber] = useState(localStorage.getItem("phoneNum"));
+    const [email,setEmail] = useState(localStorage.getItem("email"));
     const [password,setPassword] = useState("");
     const [confirmPassword,setConfirmPassword] = useState("");
-    const [city,setCity] = useState("");
+    const [city,setCity] = useState(localStorage.getItem("city"));
   
     const handleClickOpen = () => {
       setOpen(true);
@@ -86,6 +86,7 @@ export default function FormDialog(props) {
               label="First Name"
               type="text"
               fullWidth
+              value={firstName}
               onChange = {handleFirstName}
             />
             <TextField
@@ -95,6 +96,7 @@ export default function FormDialog(props) {
               label="Last Name"
               type="text"
               fullWidth
+              value={lastName}
               onChange = {handleLastNme}
             />
             <TextField
@@ -104,6 +106,7 @@ export default function FormDialog(props) {
               label="Phone Number"
               type="text"
               fullWidth
+              value={phoneNumber}
               onChange = {handlePhoneNumber}
             />
             <TextField
@@ -113,6 +116,7 @@ export default function FormDialog(props) {
               label="Email Address"
               type="text"
               fullWidth
+              value={email}
               onChange = {handleEmail}
             />
             <TextField
@@ -122,6 +126,7 @@ export default function FormDialog(props) {
               label="City"
               type="text"
               fullWidth
+              value={city}
               onChange = {handleCity}
             />
             <TextField

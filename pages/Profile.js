@@ -11,7 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useState } from 'react';
 import FormDialog from './Dialog';
 import fetch from 'isomorphic-unfetch';
-
+import Typography from '@material-ui/core/Typography';
 
 
 
@@ -35,6 +35,9 @@ const useStyles = makeStyles(theme => ({
     },
     button: {
         margin:'10px'
+    },
+    Header :{
+        backgroundColor:'#00FFFF'
     }
   }));
 
@@ -61,27 +64,30 @@ function Profile(props){
 
     return(
         <Card className={classes.Profile}>
-                <CardHeader className="header" title="Profile Page" titleTypographyProps="Profile Page">
+                <CardHeader className={classes.Header} title="Profile Page" titleTypographyProps="Profile Page">
                 
 
                 </CardHeader>
                     <CardContent className={classes.CardContent}>
-                        <TextField id="Name" label="Name" variant="outlined" color="primary" className="userid" style={{padding:9}}
-                        value={getName()}
-                        />
                         
-                        <TextField id="phoneNum" label="Phone Number" variant="outlined" color="primary" className="password"style={{padding:9}}
-                        value={localStorage.getItem("phoneNum")}
-                        />
-                        <TextField id="email_id" label="Email Id" variant="outlined" color="primary" className="email_id" style={{padding:9}}
-                        value = {localStorage.getItem("email")}
-                        />
-                        <TextField id="city" label="City" variant="outlined" color="primary" className="city"style={{padding:9}}
-                        value={localStorage.getItem("city")}
-                        />
-                        <TextField id="temperature" label="Temperature" variant="outlined" color="primary" className="temperature" style={{padding:9}}
-                        value = {props.data.main.temp}
-                        />
+                        <Typography variant="h6" gutterBottom >
+                        Name:{getName()}
+                        </Typography>
+                        <Typography variant="h6" gutterBottom >
+                        Phone Number:{localStorage.getItem("phoneNum")}
+                        </Typography>
+                        <Typography variant="h6" gutterBottom >
+                        Email ID:{localStorage.getItem("email")}
+                        </Typography>
+                        <Typography variant="h6" gutterBottom >
+                        City:{localStorage.getItem("city")}
+                        </Typography>
+                        <Typography variant="h6" gutterBottom >
+                        Temperature:{props.data.main.temp} C
+                        </Typography>
+
+
+                        
 
                         <div className={classes.ButtonClass}>
                             <Button variant="contained" color="primary" className={classes.button} type="submit" style={{padding:9}} onClick={doBack}>Back</Button>

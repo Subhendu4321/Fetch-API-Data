@@ -32,7 +32,10 @@ const useStyles = makeStyles(theme => ({
     },
     button: {
         margin:'10px'
-       }
+    },
+    Header :{
+        backgroundColor:'#00FFFF'
+    }
   }));
 
 
@@ -73,7 +76,7 @@ function Register(){
     }
     return(
         <Card className={classes.Register}>
-                <CardHeader className="header" title="Registration Page" titleTypographyProps="Registration Page">
+                <CardHeader className={classes.Header} title="Registration Page" titleTypographyProps="Registration Page">
 
                 </CardHeader>
 
