@@ -12,7 +12,7 @@ import { useState } from 'react';
 import FormDialog from './Dialog';
 import fetch from 'isomorphic-unfetch';
 import Typography from '@material-ui/core/Typography';
-
+export const MyContext = React.createContext();
 
 
 const useStyles = makeStyles(theme => ({
@@ -60,10 +60,15 @@ function Profile(props){
     const doEdit =() =>{
         setIsopen(!isopen);
     }
+    const contextValue ={
+        isopen:isopen,
+        onEdit:doEdit
+    }
 
 
     return(
-        <Card className={classes.Profile}>
+        <MyContext.Provider value={contextValue}>
+            <Card className={classes.Profile}>
                 <CardHeader className={classes.Header} title="Profile Page" titleTypographyProps="Profile Page">
                 
 
@@ -99,13 +104,16 @@ function Profile(props){
                         </div>
                         
                     </CardContent>
-                    <FormDialog  isopen={isopen} onEdit={doEdit}/>
+                    <FormDialog />
+                    {/* <FormDialog  isopen={isopen} onEdit={doEdit}/> */}
 
 
                 
                 {/* <FormDialog />  */}
 
             </Card>
+
+        </MyContext.Provider>
 
     )
 }
